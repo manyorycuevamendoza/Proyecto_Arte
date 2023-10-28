@@ -39,7 +39,7 @@ Este proyecto tiene como objetivo mostrar cómo crear un museo virtual de imáge
 * 😁 Comenta a otros sobre este proyecto 📢😀
 * Invita un café ☕ a alguien del equipo. 
 * 😉 Da las gracias públicamente 🤗.
-* 👽👻🤖
+* 🐤👻
 
 
 ## Configuración

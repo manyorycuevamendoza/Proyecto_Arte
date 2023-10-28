@@ -57,3 +57,5 @@ Entity(model='cube',position=(-2,1,16), texture='fuego')
 
 #Entity(model='cube',color=color.red ,position=(-1,1,16), texture='fuego')
 #Entity(model='cube',color=color.red ,position=(-1,2,16), texture='fuego')
+
+https://www.computerhope.com/cgi-bin/htmlcolor.pl?c=357EC7
