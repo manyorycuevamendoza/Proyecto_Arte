@@ -9,7 +9,8 @@ camera.fov=4
 
 
 app = Ursina()
-Entity(model='plane', scale=(200,200,200), texture=load_texture('1.jpg'),rotation_x=-90, z=90)
+Entity(model='plane', scale=(8000,10000,5000), texture=load_texture('chi.jpg'),rotation_x=-90,x=-1200, y=400,z=90)
+# Entity(model='plane', scale=(70,100,100), texture=load_texture('2.jpg'),rotation_x=90, z=-50)
 #Entity(model=load_model('mi_modelo.obj'))
 #de fondo una imagen
 window.background = load_texture('galaxy.jpg')
@@ -20,31 +21,35 @@ window.background = load_texture('galaxy.jpg')
 
 # funcion para crear un cubo
 def crear_piso():
-    for i in range(-15,15):
-        for j in range(-15,15):
-            Entity(model='cube',position=(i,-15,j), texture='space')
+    for i in range(-17,17):
+        for j in range(-17,17):
+            Entity(model='cube',position=(i,-17,j), texture='space',parent=scene,scale=(3,3,3))
 def crear_techo():
-    for i in range(-15,15):
-        for j in range(-15,15):
-            Entity(model='cube',position=(i,15,j), texture='space')
+    for i in range(-17,17):
+        for j in range(-17,17):
+            Entity(model='cube',position=(i,17,j), texture='space',parent=scene,scale=(3,3,3))
 def crear_pared4():
-    for i in range(-15,15):
-        for j in range(-15,15):
-            Entity(model='cube',position=(i,j,15), texture='space')
+    for i in range(-17,17):
+        for j in range(-17,17):
+            Entity(model='cube',position=(i,j,17), texture='space',parent=scene,scale=(3,3,3)) 
 def crear_pared1():
-    for i in range(-15,15):
-        for j in range(-15,15):
-            Entity(model='cube',position=(15,i,j), texture='space')
+    for i in range(-17,17):
+        for j in range(-17,17):
+            Entity(model='cube',position=(17,i,j), texture='space',parent=scene,scale=(3,3,3))
 def crear_pared2():
-    for i in range(-15,15):
-        for j in range(-15,15):
-            Entity(model='cube',position=(-15,i,j), texture='space')
-
+    for i in range(-17,17):
+        for j in range(-17,17):
+            Entity(model='cube',position=(-17,i,j), texture='space',parent=scene,scale=(3,3,3))
+def crear_pared3():
+    for i in range(-17,17):
+        for j in range(-17,17):
+            Entity(model='cube',position=(i,j,-17), texture='space',parent=scene,scale=(3,3,3))
 crear_piso()
 crear_techo()
 crear_pared4()
 crear_pared1()
 crear_pared2()
+crear_pared3()
 
 
 #el titulo se llama museo 
@@ -137,14 +142,14 @@ crear_o_2()
 
 #creando cubos que se mueban,para ello necesito crear una clase
 class Cubo(Entity):
-    def __init__(self, position=(0,0,0)):
+    def __init__(self, position=(0,0,0),texture='gato'):
         super().__init__(
             parent=scene,
             model='cube',
-            texture='gato',
             color=color.white,
             position=position,
             scale=(3,3,3),
+            texture=texture,
             )
     def update(self):
         self.rotation_y += 1
@@ -162,31 +167,52 @@ class Cubo(Entity):
             self.y += 1 * time.dt
 
 #creo el cubo
-#nivel 1
-cubo10 = Cubo(position=(5,-5,10))
-cubo10 = Cubo(position=(-5,-5,10))
+#nivel 1    
+plano1 = Entity(model='plane', scale=(4,2,2), texture=load_texture('til.png'),rotation_x=-90,rotation_z=-10, x=4,y=-1,z=7)
+cubo1 = Cubo(position=(5,-5,10), texture='señor')
 
-cubo10 = Cubo(position=(10,-5,2))
-cubo10 = Cubo(position=(10,-5,-5))
+plano2 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=-8, x=-4,y=-1,z=7)
+cubo2 = Cubo(position=(-5,-5,10),texture='gato')
 
-cubo10 = Cubo(position=(-10,-5,2))
-cubo10 = Cubo(position=(-10,-5,-5))
+plano3 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=90, x=-8,y=-1,z=1)
+cubo3 = Cubo(position=(10,-5,2),texture='gato')
 
-cubo10 = Cubo(position=(5,-5,-15))
-cubo10 = Cubo(position=(-5,-5,-15))
+plano4 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=90, x=-8,y=-1,z=-5)
+cubo4 = Cubo(position=(10,-5,-5),texture='gato')
+
+plano5 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=-100, x=8,y=-1,z=2)
+cubo5 = Cubo(position=(-10,-5,2),texture='gato')
+
+plano6 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=-100, x=8,y=-1,z=-4)
+cubo6 = Cubo(position=(-10,-5,-5),texture='gato')
+
+plano7 = Entity(model='plane', scale=(4,2,2), texture=load_texture('til.png'),rotation_x=-90,rotation_z=-150, x=4,y=-1,z=-10)
+cubo7 = Cubo(position=(5,-5,-15),texture='gato')
+plano8 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=-170, x=-4,y=-1,z=-10)
+cubo8 = Cubo(position=(-5,-5,-15),texture='gato')
 
 #nivel 2
-cubo10 = Cubo(position=(5,10,10))
-cubo10 = Cubo(position=(-5,10,10))
+plano9 = Entity(model='plane', scale=(4,2,2), texture=load_texture('til.png'),rotation_x=-90,rotation_z=-10, x=4,y=6,z=7)
+cubo9 = Cubo(position=(5,10,10),texture='gato')
 
-cubo10 = Cubo(position=(10,10,2))
-cubo10 = Cubo(position=(10,10,-5))
+plano10 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=-8, x=-4,y=6,z=7)
+cubo10 = Cubo(position=(-5,10,10),texture='gato')
 
-cubo10 = Cubo(position=(-10,10,2))
-cubo10 = Cubo(position=(-10,10,-5))
+plano11 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=90, x=-8,y=6,z=1)
+cubo11 = Cubo(position=(10,10,2),texture='gato')
 
-cubo10 = Cubo(position=(5,10,-15))
-cubo10 = Cubo(position=(-5,10,-15))
+plano12 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=90, x=-8,y=6,z=-5)
+cubo12 = Cubo(position=(10,10,-5),texture='gato')
+
+plano13 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=-100, x=8,y=6,z=2)
+cubo13 = Cubo(position=(-10,10,2),texture='gato')
+plano6 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=-100, x=8,y=6,z=-4)
+cubo14 = Cubo(position=(-10,10,-5),texture='gato')
+
+plano15 = Entity(model='plane', scale=(4,2,2), texture=load_texture('til.png'),rotation_x=-90,rotation_z=-150, x=4,y=6,z=-10)
+cubo15 = Cubo(position=(5,10,-15),texture='gato')
+plano16 = Entity(model='plane', scale=(4,2,2), texture=load_texture('q.png'),rotation_x=-90,rotation_z=-170, x=-4,y=6,z=-10)
+cubo16 = Cubo(position=(-5,10,-15),texture='gato')
 #------------------------------------------------------------------------------------------------------------------------------------------------------
 #cubos se mueven en forma circular
 class Cubo_mobible(Entity):
